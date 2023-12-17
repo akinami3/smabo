@@ -1,0 +1,3 @@
+[submodule "devel-smabo"]
+	path = devel-smabo
+	url = https://github.com/akinami3/devel-smabo.git

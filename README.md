@@ -1,8 +1,6 @@
 # smabo
 スマートフォンが入るロボットsmaboに関するリポジトリです。
 
-
-
 # smaboとは
 smaboはスマートフォンが入るロボットであり、
 
@@ -15,7 +13,7 @@ smaboはスマートフォンが入るロボットであり、
 
 など様々なことができます。
 
-<video src="./movie/smabo_example.mp4" controls title="Title"></video>
+https://github.com/akinami3/smabo/assets/151462572/efaf8d19-57ab-4605-b386-3ae562e6a525
 
 本リポジトリでは、smaboに関係するコード等をまとめていく予定です。
 

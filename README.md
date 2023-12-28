@@ -20,5 +20,5 @@ https://github.com/akinami3/smabo/assets/151462572/efaf8d19-57ab-4605-b386-3ae56
 # smaboの作り方、使い方
 smaboの作り方については以下ブログにて解説しているので、ぜひご覧ください。
 
-[スマホが入るロボットの作り方【smabo】](https://akinami3.com/smabo_summary#block-e64813f813454fb0a32df70ab081e149)
+[スマホが入るロボットの作り方【smabo】](https://akinami3.com/smabo_summary)
 ![Alt text](./image/smabo_site_img.png)

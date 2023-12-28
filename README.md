@@ -6,7 +6,6 @@
 # smaboとは
 smaboはスマートフォンが入るロボットであり、
 
-smaboでは
 - ナビゲーション (navigation)
 - 動作計画 (motion planning)
 - 画像処理 (image processing)

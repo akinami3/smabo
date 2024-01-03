@@ -101,7 +101,7 @@ ros2 run ros_tcp_endpoint default_server_endpoint
 
 ボタンをクリックし、しばらく待った後に「connected!!!!!!!」と表示されれば、接続が完了しています。
 
-
+![Alt text](./gif/smabo_connection.gif)
 
 
 > [!NOTE]
@@ -121,6 +121,8 @@ ros2 run smabo_pkg impression_pub
 ## スマホのセンサ情報をラズパイで取得する
 
 ### ジャイロ
+![Alt text](./gif/smabo_gyro.gif)
+
 以下コマンドで、スマホのジャイロの情報を取得するノードが起動します。
 
 ```bash

@@ -40,7 +40,7 @@ mkdir -p smabo_ws/src
 cd ~/
 ```
 ```bash
-cp -r ~/smabo/smabo_pkgs ~/smabo_ws/src
+git clone https://github.com/akinami3/smabo.git
 ```
 <br>
 次に、以下コマンドでsmabo用のパッケージをワークスペースのsrcディレクトリにコピーしてください

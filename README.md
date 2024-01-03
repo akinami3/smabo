@@ -102,10 +102,14 @@ ros2 run ros_tcp_endpoint default_server_endpoint
 ボタンをクリックし、しばらく待った後に「connected!!!!!!!」と表示されれば、接続が完了しています。
 
 
+
+
 > [!NOTE]
 > この時、何度か試してみても「not connected」と表示され続ける場合は、**ラズパイとスマホが異なるネットワークに接続されている可能性がある**ので確認してみてください。
 
 ### smaboの表情を変更する
+![Alt text](./gif/smabo_impression.gif)
+
 以下コマンドで、smaboの表情を変更するノードが起動します。
 
 ```bash

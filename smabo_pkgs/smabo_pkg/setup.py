@@ -26,6 +26,8 @@ setup(
             'accel_sub = smabo_pkg.accel_sub:main',
             'magnetic_sub = smabo_pkg.magnetic_sub:main',
             'pupil_move = smabo_pkg.pupil_move:main',
+            'pca9685_controller = smabo_pkg.pca9685_controller:main',
+            'simple_hand_angle_commander = smabo_pkg.simple_hand_angle_commander:main',
         ],
     },
 )

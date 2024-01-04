@@ -19,6 +19,7 @@ set (msg_files
     "msg/TwoDimensionPosition.msg"
     "msg/Gyro.msg"
     "msg/Magnetic.msg"
+    "msg/Servo.msg"
     )
 
 # IDLの生成

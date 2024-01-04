@@ -143,3 +143,35 @@ ros2 run smabo_pkg accel_sub
 ros2 run smabo_pkg gyro_sub
 ```
 
+# smaboを制御
+サーボの制御には、adafruit社のサーボドライバ「pca9685」を使用するため、以下コマンドでpca9685のpython用パッケージをインストールします。
+```bash
+pip install adafruit-pca9685
+```
+
+i2c-1の権限を変更します。
+```bash
+sudo chmod 666 /dev/i2c-1
+```
+## smaboの腕を制御
+右腕用のサーボはpca9685の6pin、左腕用のサーボは7pinに接続した状態で実施してください。
+### ROS2を使用しない
+プログラムを実行し、「-90～90度」の間の整数を入力すると、smaboの腕を指定した角度に動かすことができます。
+```bash
+
+cd ~/smabo/simple_code
+```
+```bash
+python3 pca9685_simple_hand.py
+```
+### ROS2を使用
+以下コマンドで「pca9685を制御するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg pca9685_controller
+```
+
+次に、新しいターミナルを立ち上げて「smaboの腕を制御するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg simple_hand_angle_commander
+```
+上記のノードを立ち上げ、「-90～90度」の間の整数を入力すると、smaboの腕を指定した角度に動かすことができます。

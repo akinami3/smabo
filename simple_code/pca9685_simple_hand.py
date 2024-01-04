@@ -32,14 +32,14 @@ def convert_deg_to_pulse(deg, freq):
 
 def set_servo_angle(pwm, pin, angle, freq):
     """
-    指定したGPIOピンに接続されたサーボモーターを特定の角度に設定します。
+    指定したピンに接続されたサーボモーターを特定の角度に設定します。
 
     Parameters
     ----------
     pwm : Adafruit_PCA9685.PCA9685
         Adafruit PCA9685のインスタンス。
     pin : int
-        GPIOピン番号。
+        ピン番号。
     angle : int
         サーボモーターに設定する角度 (-90から90)。
     freq : int
@@ -53,7 +53,7 @@ def main():
     pwm = Adafruit_PCA9685.PCA9685()
     pwm.set_pwm_freq(SET_FREQ)
 
-    # 右腕、左腕のGPIOピンを設定
+    # 右腕、左腕のピンを設定
     right_hand_pin = 6
     left_hand_pin = 7
 

@@ -155,6 +155,8 @@ sudo chmod 666 /dev/i2c-1
 ```
 ## smaboの腕を制御
 右腕用のサーボはpca9685の6pin、左腕用のサーボは7pinに接続した状態で実施してください。
+![Alt text](gif/smabo_simple_hand_contrl.gif)
+
 ### ROS2を使用しない
 プログラムを実行し、「-90～90度」の間の整数を入力すると、smaboの腕を指定した角度に動かすことができます。
 ```bash

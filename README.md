@@ -19,8 +19,8 @@ https://github.com/akinami3/smabo/assets/151462572/efaf8d19-57ab-4605-b386-3ae56
 
 <br>
 
-# smaboの作り方、使い方
-smaboの詳しい作り方については以下ブログにて解説しているので、ぜひご覧ください。
+# smaboのセットアップ
+smaboの詳しいセットアップについては以下ブログにて解説しているので、ぜひご覧ください。
 
 [スマホが入るロボットの作り方【smabo】](https://akinami3.com/smabo_summary)
 ![Alt text](./image/smabo_site_img.png)
@@ -28,6 +28,49 @@ smaboの詳しい作り方については以下ブログにて解説している
 <br>
 
 本READMEでは、基本的な環境構築手順、使用法についてのみ解説します。
+## 必要パッケージのインストール、設定
+下記サイトを参考に、ROS2(humble)をインストールしてください。
+https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html
+
+<br>
+
+ `source /opt/ros/humble/setup.bash` を実行すると、ros2コマンドを実行できるのですが、ターミナルを開くたびに入力するのは面倒なので、下記コマンドを実行しましょう。
+```bash
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+```
+
+<br>
+GPIOのパッケージをインストールします。
+
+```bash
+sudo apt update -y && sudo apt install -y \
+python3-rpi.gpio
+```
+
+<br>
+
+また、下記サイトを参考にsudoなしで RPi.GPIO パッケージを使うためのセットアップを実施してください。  
+[ラズパイ+ubuntuでsudoなしでRPi.GPIOを使う方法 - Qiita](https://qiita.com/akinami/items/dcec45450f79468c061f)
+
+<br>
+
+その他、必要なパッケージをインストールします
+```bash
+pip install adafruit-pca9685 # サーボドライバpca-9685のパッケージ
+```
+```bash
+pip install opencv-contrib-python # openCV（画像処理）
+```
+```bash
+pip install ipget # ipアドレスを取得
+```
+```bash
+pip install readchar # 一文字入力
+```
+```bash
+pip install flask # flask(Webアプリケーションフレームワーク)
+```
+
 ## smabo用ワークスペースの作成
 以下コマンドで、smabo用のワークスペースを作成してください
 ```bash
@@ -83,6 +126,11 @@ echo "source ~/smabo_ws/install/setup.bash" >> ~/.bashrc
 ## smaboアプリのインストール
 リポジトリ内の「SmartPhoneRobot.apk」をスマホにダウンロードし、インストールしてください。
 
+<br>
+<br>
+
+# smaboの使い方
+ここからは、smaboの使い方について説明します。
 ## smaboをROS2で通信
 ### ROS-TCP-Endpointの起動
 以下コマンドで、unityをROSで通信するためのサーバーを起動します。
@@ -136,26 +184,23 @@ ros2 run smabo_pkg gyro_sub
 ros2 run smabo_pkg accel_sub
 ```
 
-### ジャイロ
+### コンパス
 以下コマンドで、スマホのコンパス情報を取得するノードが起動します。
-
 ```bash
-ros2 run smabo_pkg gyro_sub
+ros2 run smabo_pkg magnetic_sub
 ```
 
-# smaboを制御
-サーボの制御には、adafruit社のサーボドライバ「pca9685」を使用するため、以下コマンドでpca9685のpython用パッケージをインストールします。
-```bash
-pip install adafruit-pca9685
-```
+
+## smaboの腕を制御（pca9685, sg90）
+右腕用のサーボはpca9685の6pin、左腕用のサーボは7pinに接続した状態で実施してください。
+![Alt text](gif/smabo_simple_hand_contrl.gif)
+
+<br>
 
 i2c-1の権限を変更します。
 ```bash
 sudo chmod 666 /dev/i2c-1
 ```
-## smaboの腕を制御
-右腕用のサーボはpca9685の6pin、左腕用のサーボは7pinに接続した状態で実施してください。
-![Alt text](gif/smabo_simple_hand_contrl.gif)
 
 ### ROS2を使用しない
 プログラムを実行し、「-90～90度」の間の整数を入力すると、smaboの腕を指定した角度に動かすことができます。
@@ -167,7 +212,7 @@ cd ~/smabo/simple_code
 python3 pca9685_simple_hand.py
 ```
 ### ROS2を使用
-以下コマンドで「pca9685を制御するノード」を立ち上げます。
+「pca9685を制御するノード」を立ち上げます。
 ```bash
 ros2 run smabo_pkg pca9685_controller
 ```
@@ -177,3 +222,96 @@ ros2 run smabo_pkg pca9685_controller
 ros2 run smabo_pkg simple_hand_angle_commander
 ```
 上記のノードを立ち上げ、「-90～90度」の間の整数を入力すると、smaboの腕を指定した角度に動かすことができます。
+
+## smaboの頭を制御（pca9685, sg90）
+![Alt text](./gif/smabo_head_control.gif)
+
+<br>
+
+i2c-1の権限を変更します。
+```bash
+sudo chmod 666 /dev/i2c-1
+```
+頭用のサーボはpca9685の5pinに接続した状態で実施してください。
+
+### ROS2を使用
+「pca9685を制御するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg pca9685_controller
+```
+
+次に、新しいターミナルを立ち上げて「smaboの頭を制御するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg head_arrow_key_commander 
+```
+上記のノードを立ち上げ、"z"キーを入力すると左方向に回転、"x"キーを入力すると右方向に回転します。
+
+## 超音波センサからの情報を取得 (hc-sr04)
+![Alt text](./gif/smabo_ultrasonic.gif)
+
+<br>
+
+超音波センサにはhc-sr04を使用します。
+
+### ros2を使用しない
+「超音波センサからの距離情報を取得するコード」を実行します。
+```bash
+cd ~/smabo/simple_code
+```
+```bash
+python3 ultrasonic_sr04.py 
+```
+コードを実行すると下記のように、超音波センサで計測した距離(cm)が表示されます。
+```bash
+13.17 cm
+13.18 cm
+13.21 cm
+13.20 cm
+13.21 cm
+```
+
+### ros2を使用する。
+「超音波センサからの距離情報を取得するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg ultrasonic_sensor
+```
+
+コードを実行すると下記のように、超音波センサで計測した距離(m)が表示されます。
+```bash
+[INFO] [1704560652.946915129] [ultrasonic_sensor]: distance: 0.04410195350646973 m
+[INFO] [1704560652.951719651] [ultrasonic_sensor]: distance: 0.1263386607170105 m
+[INFO] [1704560653.041953099] [ultrasonic_sensor]: distance: 0.12637817859649658 m
+[INFO] [1704560653.143156803] [ultrasonic_sensor]: distance: 0.12622010707855225 m
+[INFO] [1704560653.242842910] [ultrasonic_sensor]: distance: 0.12665480375289917 m
+```
+
+## smaboのカメラを制御 (openCV, flask)
+![Alt text](./gif/smabo_stream_flask.gif)
+
+<br>
+
+video0 の権限を変更します。
+```bash
+sudo chmod 666 /dev/video0
+```
+### ROS2を使用しない
+「カメラから取得した画像をflaskのサーバ上で表示するコード」を実行します。
+```bash
+cd ~/smabo/simple_code
+```
+```bash
+python3 cam_stream_on_flask.py
+```
+ターミナル上に表示されるアドレス(192.168.\*\*\*.\*\*\*:5000/)にアクセスするとカメラから取得された画像が表示されます。
+
+### ROS2を使用
+「カメラから画像を取得するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg cam_stream 
+```
+
+新しくターミナルを立ち上げて、「/imageトピックから購読した画像をflask上で表示するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg flask_image_display
+```
+ターミナル上に表示されるアドレス(192.168.\*\*\*.\*\*\*:5000/)にアクセスするとカメラから取得された画像が表示されます。

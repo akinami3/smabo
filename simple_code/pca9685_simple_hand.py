@@ -70,8 +70,7 @@ def main():
             set_servo_angle(pwm, left_hand_pin, -deg, SET_FREQ)
 
     except KeyboardInterrupt:
-        set_servo_angle(pwm, left_hand_pin, 0, SET_FREQ)
-        set_servo_angle(pwm, right_hand_pin, 0, SET_FREQ)
+        pwm.set_all_pwm(0,0)
         print("プログラムを終了します。")
 
 if __name__ == "__main__":

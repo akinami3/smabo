@@ -32,6 +32,8 @@ class Pca9685Controller(Node):
             self.servo_callback,
             qos_profile # センサーデータに適切なqos_profileを設定
         )
+    def __del__(self):
+        self.pwm.set_all_pwm(0,0)
 
     def servo_callback(self, msg):
         self.get_logger().info(f"pin_no:{msg.pin_no}, deg:{msg.angle}")

@@ -28,6 +28,10 @@ setup(
             'pupil_move = smabo_pkg.pupil_move:main',
             'pca9685_controller = smabo_pkg.pca9685_controller:main',
             'simple_hand_angle_commander = smabo_pkg.simple_hand_angle_commander:main',
+            'cam_stream = smabo_pkg.cam_stream:main',
+            'flask_image_display = smabo_pkg.flask_image_display:main',
+            'ultrasonic_sensor = smabo_pkg.ultrasonic_sensor:main',
+            'head_arrow_key_commander = smabo_pkg.head_arrow_key_commander:main',
         ],
     },
 )

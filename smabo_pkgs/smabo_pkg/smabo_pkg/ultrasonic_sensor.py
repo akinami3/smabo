@@ -64,7 +64,6 @@ class UltrasonicSensor(Node):
     def timer_callback(self):
         # 超音波センサから取得した距離情報をpublish
         distance = self.calculate_distance()
-        self.get_logger().info(f"distance: {distance}")
         if distance is not None:
             range_msg = Range() # メッセージ生成
 
@@ -77,6 +76,8 @@ class UltrasonicSensor(Node):
             range_msg.range = distance / 100  # mに変換した距離情報を格納
             range_msg.header.stamp = self.get_clock().now().to_msg() # 現在時刻の情報を格納
             self.publisher.publish(range_msg)
+            self.get_logger().info(f"distance: {range_msg.range} m")
+
 
 def main(args=None):
     rclpy.init(args=args)

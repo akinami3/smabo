@@ -50,7 +50,7 @@ python3-rpi.gpio
 <br>
 
 また、下記サイトを参考にsudoなしで RPi.GPIO パッケージを使うためのセットアップを実施してください。  
-[ラズパイ+ubuntuでsudoなしでRPi.GPIOを使う方法 - Qiita](https://qiita.com/akinami/items/dcec45450f79468c061f)
+[【ラズパイ+ubuntu】sudoなしでadd_event_detectを使うとfailed to add edge detectionエラーが出るときの解決方法](https://qiita.com/akinami/items/90323c1bb010db9683a5)
 
 <br>
 

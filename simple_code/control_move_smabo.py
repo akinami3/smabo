@@ -22,10 +22,10 @@ FORWARD = 1
 BACK = 2
 TURN_RIGHT = 3
 TURN_LEFT = 4
-CURVE_RIGHT_FRONT = 5
-CURVE_RIGHT_BACK = 6
-CURVE_LEFT_FRONT = 7
-CURVE_LEFT_BACK = 8
+ONLY_LEFT_FRONT = 5
+ONLY_LEFT_BACK = 6
+ONLY_RIGHT_FRONT = 7
+ONLY_RIGHT_BACK = 8
 
 def control_dc_motor(running_state, motor_power, left_motor_in1, left_motor_in2, right_motor_in1, right_motor_in2, left_motor, right_motor):
     """
@@ -34,7 +34,7 @@ def control_dc_motor(running_state, motor_power, left_motor_in1, left_motor_in2,
     Parameters
     ----------
     running_state : int
-        モーターの動作状態（STOP, FORWARD, BACK, TURN_RIGHT, TURN_LEFT, CURVE_RIGHT_FRONT, CURVE_RIGHT_BACK, CURVE_LEFT_FRONT, CURVE_LEFT_BACK）
+        モーターの動作状態（STOP, FORWARD, BACK, TURN_RIGHT, TURN_LEFT, ONLY_LEFT_FRONT, ONLY_LEFT_BACK, ONLY_RIGHT_FRONT, CURVE_LEFT_BACK）
     motor_power : int
         モーターの動作強度（PWM値）
     left_motor_in1 : int
@@ -86,25 +86,25 @@ def control_dc_motor(running_state, motor_power, left_motor_in1, left_motor_in2,
         GPIO.output(left_motor_in1, GPIO.LOW)
         GPIO.output(left_motor_in2, GPIO.HIGH)
 
-    if running_state == CURVE_RIGHT_FRONT:
+    if running_state == ONLY_LEFT_FRONT:
         left_motor.ChangeDutyCycle(motor_power)
         right_motor.ChangeDutyCycle(0)
         GPIO.output(left_motor_in1, GPIO.LOW)
         GPIO.output(left_motor_in2, GPIO.HIGH)
 
-    if running_state == CURVE_RIGHT_BACK:
+    if running_state == ONLY_LEFT_BACK:
         left_motor.ChangeDutyCycle(motor_power)
         right_motor.ChangeDutyCycle(0)
         GPIO.output(left_motor_in1, GPIO.HIGH)
         GPIO.output(left_motor_in2, GPIO.LOW)
 
-    if running_state == CURVE_LEFT_FRONT:
+    if running_state == ONLY_RIGHT_FRONT:
         left_motor.ChangeDutyCycle(0)
         right_motor.ChangeDutyCycle(motor_power)
         GPIO.output(right_motor_in1, GPIO.HIGH)
         GPIO.output(right_motor_in2, GPIO.LOW)
 
-    if running_state == CURVE_LEFT_BACK:
+    if running_state == ONLY_RIGHT_BACK:
         left_motor.ChangeDutyCycle(0)
         right_motor.ChangeDutyCycle(motor_power)
         GPIO.output(right_motor_in1, GPIO.LOW)
@@ -154,13 +154,13 @@ def main():
             elif key == "s": # 停止
                 current_state = STOP
             elif key == "e": # 右カーブ（前進）
-                current_state = CURVE_RIGHT_FRONT
+                current_state = ONLY_LEFT_FRONT
             elif key == "c": # 右カーブ（後退）
-                current_state = CURVE_RIGHT_BACK
+                current_state = ONLY_LEFT_BACK
             elif key == "q": # 左カーブ（全身）
-                current_state = CURVE_LEFT_FRONT
+                current_state = ONLY_RIGHT_FRONT
             elif key == "z": # 左カーブ（後退）
-                current_state = CURVE_LEFT_BACK
+                current_state = ONLY_RIGHT_BACK
             elif key == "r": # 速度上昇
                 if current_pwm <= PWM_MAX:
                     current_pwm += PWM_STEP

@@ -30,7 +30,7 @@ class Pca9685Controller(Node):
             Servo,
             '/servo',
             self.servo_callback,
-            qos_profile # センサーデータに適切なqos_profileを設定
+            qos_profile
         )
     def __del__(self):
         self.pwm.set_all_pwm(0,0)

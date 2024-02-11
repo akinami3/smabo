@@ -20,6 +20,7 @@ set (msg_files
     "msg/Gyro.msg"
     "msg/Magnetic.msg"
     "msg/Servo.msg"
+    "msg/DcMotor.msg"
     )
 
 # IDLの生成

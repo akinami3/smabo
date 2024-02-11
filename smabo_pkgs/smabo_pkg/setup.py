@@ -14,7 +14,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='docker',
-    maintainer_email='',
+    maintainer_email='er17026-6673@sti.chubu.ac.jp',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
@@ -32,6 +32,8 @@ setup(
             'flask_image_display = smabo_pkg.flask_image_display:main',
             'ultrasonic_sensor = smabo_pkg.ultrasonic_sensor:main',
             'head_arrow_key_commander = smabo_pkg.head_arrow_key_commander:main',
+            'move_robot_dc_controller = smabo_pkg.move_robot_dc_controller:main',
+            'move_robot_commander = smabo_pkg.move_robot_commander:main',
         ],
     },
 )

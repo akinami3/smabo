@@ -315,3 +315,23 @@ ros2 run smabo_pkg cam_stream
 ros2 run smabo_pkg flask_image_display
 ```
 ターミナル上に表示されるアドレス(192.168.\*\*\*.\*\*\*:5000/)にアクセスするとカメラから取得された画像が表示されます。
+
+## 移動ロボットで制御
+![alt text](./gif/move_robot.gif)
+### ROS2を使用しない
+「移動ロボットのsmaboを制御するコード」を実行します。
+```bash
+cd ~/smabo/simple_code
+```
+```bash
+python3 control_move_smabo.py
+```
+
+キーボードの以下ボタンを押すことで制御できます。  
+s: 停止  
+w: 前進  
+x: 後進  
+d: 右回転（その場回転）  
+a: 左回転（その場回転）  
+e: 右回転前進
+c: 右回転後進

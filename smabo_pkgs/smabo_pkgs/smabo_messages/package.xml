@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>smabo_messages</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="er17026-6673@sti.chubu.ac.jp">docker</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+	<!--以下を追記-->
+	<!--rosidl_default_generators：メッセージのビルドに必要-->
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+	<!--rosidl_default_runtime：メッセージの実行に必要-->
+  <exec_depend>rosidl_default_runtime</exec_depend>
+	<!--rosidl_interface_package：インターフェイスパッケージのグループ-->
+  <member_of_group>rosidl_interface_packages</member_of_group>
+	<!--ここまで-->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

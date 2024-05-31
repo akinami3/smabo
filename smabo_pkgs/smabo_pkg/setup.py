@@ -34,6 +34,7 @@ setup(
             'head_arrow_key_commander = smabo_pkg.head_arrow_key_commander:main',
             'move_robot_dc_controller = smabo_pkg.move_robot_dc_controller:main',
             'move_robot_commander = smabo_pkg.move_robot_commander:main',
+            'link3_robot_arm_commander = smabo_pkg.link3_robot_arm_commander:main',
         ],
     },
 )

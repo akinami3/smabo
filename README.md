@@ -1,4 +1,8 @@
 # smabo
+
+[スマホが入るロボットの作り方【smabo】](https://zenn.dev/akinami/books/f8f2effbc79894)
+![Alt text](./image/smabo_site_img.png)
+
 スマートフォンが入るロボットsmaboに関するリポジトリです。
 - [smabo](#smabo)
 - [smaboとは](#smaboとは)
@@ -33,6 +37,9 @@
     - [ROS2を使用](#ros2を使用-3)
 
 # smaboとは
+
+
+
 smaboはスマートフォンが入るロボットであり、
 
 - ナビゲーション (navigation)
@@ -53,8 +60,9 @@ https://github.com/akinami3/smabo/assets/151462572/efaf8d19-57ab-4605-b386-3ae56
 # smaboのセットアップ
 smaboの詳しいセットアップについては以下ブログにて解説しているので、ぜひご覧ください。
 
-[スマホが入るロボットの作り方【smabo】](https://akinami3.com/smabo_summary)
-![Alt text](./image/smabo_site_img.png)
+[スマホが入るロボットの作り方【smabo】](https://zenn.dev/akinami/books/f8f2effbc79894)
+
+
 
 <br>
 

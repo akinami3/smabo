@@ -35,6 +35,8 @@
   - [移動ロボットとして制御](#移動ロボットとして制御)
     - [ROS2を使用しない](#ros2を使用しない-3)
     - [ROS2を使用](#ros2を使用-3)
+- [ロボットアームを制御](#ロボットアームを制御)
+    - [ROS2を使用](#ros2を使用-4)
 
 # smaboとは
 
@@ -411,3 +413,44 @@ q: 右車輪のみ前進
 z: 右車輪のみ後退  
 r: 加速
 v: 減速
+
+# ロボットアームを制御
+
+![Alt text](./gif/smabo_robot_arm.gif)
+
+i2c-1の権限を変更します。
+```bash
+sudo chmod 666 /dev/i2c-1
+```
+
+各サーボはpca9685の以下のpinに接続してください。
+- link1（頭のサーボと共有）: 5pin
+- link2: 13pin
+- link3: 14pin
+- gripper: 15pin
+
+### ROS2を使用
+「pca9685を制御するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg pca9685_controller
+```
+
+次に、新しいターミナルを立ち上げて「ロボットアームの各リンク、グリッパを設定するノード」を立ち上げます。
+```bash
+ros2 run smabo_pkg link3_robot_arm_commander
+```
+キーボードの以下ボタンを押すことで制御できます。
+
+q w e  
+a s d  
+z x  
+
+z: link1を正方向に回転    
+x: link1を逆方向に回転  
+q: link2を正方向に回転  
+a: link2を逆方向に回転  
+w: link3を正方向に回転  
+s: link3を逆方向に回転  
+e: グリッパを開く  
+d: グリッパを閉じる  
+

@@ -3,9 +3,21 @@
 [English version here](./README.md)
 
 > [!IMPORTANT]
-> こちらは、旧smaboのリポジトリであり、現在は更新を停止しており、非推奨です。
+> こちらは、旧smaboのリポジトリです。
+> 現在は開発を停止しており、本リポジトリは非推奨です。
+> 
 > 大幅にパワーアップした新smaboのリポジトリは以下です。
 > [smabo-smartphone-robot](https://github.com/smabo-smartphone-robot)
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 
 ---
 

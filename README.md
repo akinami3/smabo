@@ -4,9 +4,12 @@
 
 > [!IMPORTANT]
 > This is the repository for the old smabo.
+> 
 > It is no longer under active development, and this repository is deprecated.
 >
+>
 > The repository for the greatly powered-up new smabo is below.
+> 
 > [smabo-smartphone-robot](https://github.com/smabo-smartphone-robot)
 
 
